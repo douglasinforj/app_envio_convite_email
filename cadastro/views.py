@@ -23,5 +23,5 @@ def cadastrar_pessoa(request):
 
 def listar_pessoas(request):
     pessoas = Pessoa.objects.all()
-    return render(request, 'cadastro/listar.html', {'pessoas':'pessoas'})
+    return render(request, 'cadastro/listar.html', {'pessoas': pessoas})
 
