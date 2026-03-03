@@ -10,7 +10,7 @@ def index(request):
 
 
 def cadastrar_pessoa(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = PessoaForm(request.POST)
         if form.is_valid():
             pessoa = form.save()
@@ -18,6 +18,8 @@ def cadastrar_pessoa(request):
             return redirect('listar_pessoas')
     else:
         form = PessoaForm()
+    
+    return render(request, 'cadastro/cadastrar.html', {'form': form})
 
 def listar_pessoas(request):
     pessoas = Pessoa.objects.all()
