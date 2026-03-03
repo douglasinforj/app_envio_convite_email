@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pessoa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <!--Barra navegção-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'cadastro:index' %}">Sistema de Cadastro</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastro:listar_pessoas' %}">Listar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Cadastrar Nova Pessoa</h2>
+
+        <!--Mensagens de Erro na pagina-->
+        {% if messages %}
+            {% for message in massages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+        <!--Formulário de Cadastro-->
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.nome.id_for_label }}" class="form-label">Nome:</label>
+                {{ form.nome }}
+                {% if form.nome.errors %}
+                    <div class="text-danger">{{ form.nome.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label">E-mail:</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-danger">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.telefone.id_for_label }}" class="form-label">Telefone:</label>
+                {{ form.telefone }}
+                {% if form.telefone.errors %}
+                    <div class="text-danger">{{ form.telefone.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a href="{% url 'cadastro:listar_pessoas' %}" class="btn btn-secondary">Cancelar</a>
+
+        </form>    
+
+
+    </div><!--Fim container-->
+    
+</body>
+</html>
