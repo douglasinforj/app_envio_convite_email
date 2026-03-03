@@ -17,3 +17,14 @@ class PessoaForm(forms.ModelForm):
                 raise forms.ValidationError('Este email já existe cadastrado!')
             return email
         
+
+class ConviteForm(forms.Form):
+    assunto = forms.CharField(
+        max_length=200,
+        initial='Convite para paraticipar do nosso evento',
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+    mensagem = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        initial='Olá {nome},\n\nGostaríamos de convidá-lo para participar do nosso sistema...\n\nAtenciosamente,\nEquipe'
+    )
