@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.utils import timezone
+
 
 class Pessoa(models.Model):
     nome = models.CharField('Nome', max_length=100)
@@ -19,3 +21,7 @@ class Pessoa(models.Model):
         return self.nome
     
 
+    # criando função para marcar que convite foi enviado
+    def enviar_convite(self):
+        self.convite_enviado = True
+        self.data_convite = timezone.now()
