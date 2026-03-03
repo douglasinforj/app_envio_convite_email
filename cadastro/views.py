@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from .forms import PessoaForm
 from django.contrib import messages
 from .models import Pessoa
@@ -24,4 +24,10 @@ def cadastrar_pessoa(request):
 def listar_pessoas(request):
     pessoas = Pessoa.objects.all()
     return render(request, 'cadastro/listar.html', {'pessoas': pessoas})
+
+
+
+def detalhes_pessoa(request, pk):
+    pessoa = get_list_or_404(Pessoa, pk=pk)
+    return render(request, 'cadastro/detalhes.html', {'pessoa':pessoa})
 
