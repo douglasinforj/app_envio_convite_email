@@ -61,11 +61,21 @@
                         {% endif %}
                     </td>
                     <td>{{ pessoa.data_cadastro|date:"d/m/Y H:i" }}</td>
+
+                    <!--Coluna Ações-->
                     <td>
                         <a href="{% url 'cadastro:detalhes_pessoa' pessoa.pk %}" class="btn btn-sm btn-info" title="Detalhes">
                             <i class="bi bi-eye"></i>
                         </a>
+
+                        {% if not pessoa.convite_enviado %}
+                        <a href="{% url 'cadastro:enviar_convite' pessoa.pk %}" class="btn btn-sm btn-primary" title="Enviar Convite">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        {% endif%}
+
                     </td>
+
                 </tr>
 
                 {% empty %}
