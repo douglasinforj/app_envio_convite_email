@@ -61,6 +61,11 @@
                         {% endif %}
                     </td>
                     <td>{{ pessoa.data_cadastro|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        <a href="{% url 'cadastro:detalhes_pessoa' pessoa.pk %}" class="btn btn-sm btn-info" title="Detalhes">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </td>
                 </tr>
 
                 {% empty %}
