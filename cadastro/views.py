@@ -22,7 +22,7 @@ def cadastrar_pessoa(request):
         if form.is_valid():
             pessoa = form.save()
             messages.success(request, f'{pessoa.nome} cadastrado com sucesso!')
-            return redirect('listar_pessoas')
+            return redirect('cadastro:listar_pessoas')   #nomespace:nome
     else:
         form = PessoaForm()
     
