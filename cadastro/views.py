@@ -31,7 +31,7 @@ def listar_pessoas(request):
 
 
 def detalhes_pessoa(request, pk):
-    pessoa = get_list_or_404(Pessoa, pk=pk)
+    pessoa = get_object_or_404(Pessoa, pk=pk)
     return render(request, 'cadastro/detalhes.html', {'pessoa':pessoa})
 
 
