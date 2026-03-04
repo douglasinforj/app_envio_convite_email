@@ -12,6 +12,10 @@ def index(request):
     return render(request, 'cadastro/index.html')
 
 
+def listar_pessoas(request):
+    pessoas = Pessoa.objects.all()
+    return render(request, 'cadastro/listar.html', {'pessoas': pessoas})
+
 def cadastrar_pessoa(request):
     if request.method == 'POST':
         form = PessoaForm(request.POST)
@@ -24,9 +28,7 @@ def cadastrar_pessoa(request):
     
     return render(request, 'cadastro/cadastrar.html', {'form': form})
 
-def listar_pessoas(request):
-    pessoas = Pessoa.objects.all()
-    return render(request, 'cadastro/listar.html', {'pessoas': pessoas})
+
 
 
 
